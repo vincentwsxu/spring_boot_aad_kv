@@ -1,16 +1,18 @@
 #!/bin/bash
 
+source ./0-variables.sh
+
 #
 # Create a bunch of random passwords
 #
 mkdir .passwords
-export sql_password="$(openssl rand 14 -base64)"
+export sql_password="$(openssl rand -base64 14)"
 echo "${sql_password}" > ".passwords/.${rg_name}-${prefix}-sql_password"
 export sql_password="$(cat .passwords/.${rg_name}-${prefix}-sql_password)"
 
 
 # export service_principal_pass="${AAD_CLIENT_ID}"
-export service_principal_pass="$(openssl rand 14 -base64)"
+export service_principal_pass="$(openssl rand -base64 14)"
 echo "${service_principal_pass}" > ".passwords/.${rg_name}-${prefix}-service_principal_pass"
 export service_principal_pass="$(cat .passwords/.${rg_name}-${prefix}-service_principal_pass)"
 

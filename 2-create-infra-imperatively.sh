@@ -2,14 +2,16 @@
 
 source ./0-variables.sh
 
+# [VX] run it manually 
 ./1-create-service-principal.sh
 
 #
 # Create the resource group
 #
-az group create \
-    --name "${rg_name}" \
-    --location  "${location}"
+# [VX] run it manually
+#az group create \
+#    --name "${rg_name}" \
+#    --location  "${location}"
 
 #
 # Create SQL Azure Server
@@ -129,10 +131,9 @@ az acr task create \
     --name "${acr_build_task_name}" \
     --image $TAG:{{.Run.ID}} \
     --image $TAG:latest \
-    --context https://github.com/chgeuer/spring_boot_aad_kv.git \
-    --branch master \
+    --context https://github.com/vincentwsxu/spring_boot_aad_kv.git#master \
     --file Dockerfile \
-    --git-access-token $github
+    --git-access-token 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 
 
 #
 # Trigger initial creation of Docker image
